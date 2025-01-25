@@ -3,6 +3,7 @@ package ch.soopy.echo.service.impl;
 import ch.soopy.echo.mapper.MessageMapper;
 import ch.soopy.echo.mapper.UserMapper;
 import ch.soopy.echo.service.UserService;
+import cn.soopy.echo.constant.MessageConstant;
 import cn.soopy.echo.dto.ItemDTO;
 import cn.soopy.echo.entity.Message;
 import cn.soopy.echo.entity.User;
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService {
      */
     public void addItem(ItemDTO itemDTO) {
         if (itemDTO == null || itemDTO.getName() == null || itemDTO.getName().isEmpty()) {
-            throw new BaseException("缺少必要信息！");
+            throw new BaseException(MessageConstant.EMPTY_NAME);
         }
         Message message = Message.builder()
                 .content(itemDTO.getContent())
