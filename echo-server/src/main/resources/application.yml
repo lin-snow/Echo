@@ -17,3 +17,5 @@ mybatis:
   type-aliases-package: cn.soopy.echo.entity
   configuration:
     map-underscore-to-camel-case: true
+
+

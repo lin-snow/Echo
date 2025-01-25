@@ -4,7 +4,21 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ch.soopy.echo.mapper.UserMapper">
-    <insert id="add">
-        insert
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into user (name, email, create_time) VALUES (#{name}, #{email}, #{createTime})
+
     </insert>
+
+    <select id="getUserByInfo" resultType="cn.soopy.echo.entity.User">
+        SELECT * from user
+        <where>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+            <if test="email != email">
+                and email #{email}
+            </if>
+        </where>
+    </select>
 </mapper>
